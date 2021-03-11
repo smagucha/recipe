@@ -2,6 +2,8 @@ from django.shortcuts import render
 import requests
 from .recipeapifolder import apikey
 import json
+from .forms import searchForm
+from django.http import HttpResponseRedirect
 
 def home(request):
 	responseapi = requests.request("GET", apikey.url)
@@ -29,4 +31,10 @@ def Ingendrients(request):
 	return render(request, 'recipe/ingredientLines.html',context)
 
 def searchform(request):
-	return render(request, 'recipe/search.html')
+    if request.method == 'POST':
+        form = searchForm(request.POST)
+        if form.is_valid(): 
+            return HttpResponseRedirect('')
+    else:
+        form = searchForm()
+    return render(request, 'recipe/search.html', {'form':form})
