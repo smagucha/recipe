@@ -34,7 +34,7 @@ def searchform(request):
     if request.method == 'POST':
         form = searchForm(request.POST)
         if form.is_valid(): 
-            return HttpResponseRedirect('')
+            return HttpResponseRedirect('/')
     else:
         form = searchForm()
     return render(request, 'recipe/search.html', {'form':form})

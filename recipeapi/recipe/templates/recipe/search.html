@@ -1,14 +1,16 @@
 {%extends 'recipe/base.html'%}
 {% load static %}
 {%block content%}
-<div class='form'>
-<link rel="stylesheet" type="text/css" href="{% static 'recipe/css/form.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <b>search for recipe you wish</b>
-  <form class="example" method="Post" action='' style="margin:auto; width:60%">
-    {%csrf_token%}
-    {{form}}
-    <button type="submit"><i class="fa fa-search"></i></button>
-  </form>
-</div>
+ <header class="jumbotron my-4">
+      <h1 class="display-3">search recipe</h1>
+      <div class='form'>
+      <link rel="stylesheet" type="text/css" href="{% static 'recipe/css/form.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <form class="example" method="Post" action='' style="margin:auto; width:60%">
+          {%csrf_token%}
+          {{form}}
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </header>
 {%endblock%}
