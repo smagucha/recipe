@@ -27,3 +27,6 @@ def home(request):
 def Ingendrients(request):
 	
 	return render(request, 'recipe/ingredientLines.html',context)
+
+def searchform(request):
+	return render(request, 'recipe/search.html')
