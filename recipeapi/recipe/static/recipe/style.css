@@ -1,0 +1,23 @@
+.title {
+	background-color: orange;
+	width:100%;
+	height: auto;
+	
+
+}
+.container{
+	
+	margin: 5px;
+	
+}
+.main{
+	width:48%;
+	height: 50%;
+	float:left;
+	border:;
+	margin:5px;
+}
+.mid img{
+	float:left;
+	margin:5px;
+}
