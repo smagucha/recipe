@@ -7,7 +7,7 @@ import os
 def home(request):
 	id_app=os.environ.get('id_app')  
 	Api_key=os.environ.get('Api_key')
-	values=request.POST.get('q',default=None)
+	values=request.POST.get('q','')
 	print(values)
 	url='https://api.edamam.com/search?q='+values+'&app_id='+ id_app +'&app_key='+Api_key+''
 	responseapi = requests.request("GET", url)
@@ -30,9 +30,12 @@ def home(request):
 	return render(request, 'recipe/home.html', context)
 		
 
-def Ingendrients(request):
+def Favoriterecipe(request):
 	
-	return render(request, 'recipe/ingredientLines.html',context)
+	return render(request, 'recipe/favoriterecipe.html')
 
 def searchform(request):
     return render(request, 'recipe/search.html')
+
+def addrecipe(request):
+	return render(request,'recipe/addrecipe.html')
