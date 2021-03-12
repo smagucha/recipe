@@ -1,12 +1,16 @@
 from django.shortcuts import render
 import requests
-from .recipeapifolder import apikey
 import json
-from .forms import searchForm
 from django.http import HttpResponseRedirect
+import os
 
 def home(request):
-	responseapi = requests.request("GET", apikey.url)
+	id_app=os.environ.get('id_app')  
+	Api_key=os.environ.get('Api_key')
+	values=request.POST.get('q',default=None)
+	print(values)
+	url='https://api.edamam.com/search?q='+values+'&app_id='+ id_app +'&app_key='+Api_key+''
+	responseapi = requests.request("GET", url)
 	r= responseapi.json()
 	json_object = json.dumps(r)
 	hits=r['hits']
@@ -31,10 +35,4 @@ def Ingendrients(request):
 	return render(request, 'recipe/ingredientLines.html',context)
 
 def searchform(request):
-    if request.method == 'POST':
-        form = searchForm(request.POST)
-        if form.is_valid(): 
-            return HttpResponseRedirect('/')
-    else:
-        form = searchForm()
-    return render(request, 'recipe/search.html', {'form':form})
+    return render(request, 'recipe/search.html')
