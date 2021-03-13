@@ -68,7 +68,7 @@ TEMPLATES = [
         },
     },
 ]
-
+AUTH_USER_MODEL='account.User'
 WSGI_APPLICATION = 'recipeapi.wsgi.application'
 
 
