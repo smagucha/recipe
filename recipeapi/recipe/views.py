@@ -6,6 +6,21 @@ import os
 from django.contrib.auth.decorators import login_required
 @login_required(login_url='/accounts/login/')
 def home(request):
+	if request.user.is_authenticated:
+		return render(request, 'recipe/search.html')
+	else:
+		return HttpResponseRedirect('login')
+	
+
+		
+@login_required(login_url='/accounts/login/')
+def Favoriterecipe(request):
+	if request.user.is_authenticated:
+		return render(request, 'recipe/favoriterecipe.html')
+	else:
+		return HttpResponseRedirect('login')
+@login_required(login_url='/accounts/login/')
+def searchform(request):
 	if request.user.is_authenticated:#user.is_authenticated
 		id_app=os.environ.get('id_app')  
 		Api_key=os.environ.get('Api_key')
@@ -30,20 +45,6 @@ def home(request):
 			'newrecipe':newrecipe
 		}
 		return render(request, 'recipe/home.html', context)
-	else:
-		return HttpResponseRedirect('login')
-
-		
-@login_required(login_url='/accounts/login/')
-def Favoriterecipe(request):
-	if request.user.is_authenticated:
-		return render(request, 'recipe/favoriterecipe.html')
-	else:
-		return HttpResponseRedirect('login')
-@login_required(login_url='/accounts/login/')
-def searchform(request):
-	if request.user.is_authenticated:
-		return render(request, 'recipe/search.html')
 	else:
 		return HttpResponseRedirect('login')
 
