@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipe',
-    'account'
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -68,7 +68,7 @@ TEMPLATES = [
         },
     },
 ]
-AUTH_USER_MODEL='account.User'
+AUTH_USER_MODEL='accounts.User'
 WSGI_APPLICATION = 'recipeapi.wsgi.application'
 
 
@@ -119,4 +119,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+
 STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
+
+
+LOGIN_URL ='/accounts/login/'
+LOGOUT_URL = 'accounts/logout'
+STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL='/'
