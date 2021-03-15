@@ -4,21 +4,21 @@ import json
 from django.http import HttpResponseRedirect
 import os
 from django.contrib.auth.decorators import login_required
+from .models import RecipeFood
+from .forms import RecipeForm
+
 @login_required(login_url='/accounts/login/')
 def home(request):
-	if request.user.is_authenticated:
-		return render(request, 'recipe/search.html')
-	else:
-		return HttpResponseRedirect('login')
+	return render(request, 'recipe/search.html')
+
 	
 
 		
 @login_required(login_url='/accounts/login/')
 def Favoriterecipe(request):
-	if request.user.is_authenticated:
-		return render(request, 'recipe/favoriterecipe.html')
-	else:
-		return HttpResponseRedirect('login')
+	allfavour=RecipeFood.objects.all()
+	return render(request, 'recipe/favoriterecipe.html',{'allfavour':allfavour})
+	
 @login_required(login_url='/accounts/login/')
 def searchform(request):
 	if request.user.is_authenticated:#user.is_authenticated
@@ -51,7 +51,12 @@ def searchform(request):
 
 @login_required(login_url='/accounts/login/')
 def addrecipe(request):
-	if request.user.is_authenticated:
-		return render(request,'recipe/addrecipe.html')
+	if request.method =='POST':
+		form =  RecipeForm(request.POST)
+		if form.is_valid():
+			form.save()
+			form =  RecipeForm()
+			return HttpResponseRedirect('favouriterecipe')
 	else:
-		return HttpResponseRedirect('login')
+		form =  RecipeForm()
+		return render(request, 'recipe/addrecipe.html', {'form': form})
