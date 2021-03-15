@@ -6,7 +6,7 @@
       <div class='form'>
       <link rel="stylesheet" type="text/css" href="{% static 'recipe/css/form.css' %}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <form class="example" method="POST" action="{% url 'home' %}" style="margin:auto; width:60%">
+        <form class="example" method="POST" action="{% url '' %}" style="margin:auto; width:60%">
           {%csrf_token%}
           <input type="text" name="q" id='q'/>
           <button type="submit"><i class="fa fa-search"></i></button>

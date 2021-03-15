@@ -20,8 +20,9 @@
       </div>
       <div>
         <input type="submit" value="Log in" />
+        <input type="hidden" name="next" value="{{ next }}"/>
         <a href="#">Lost your password?</a>
-        <a href="#">Register</a>
+        <a href="{% url 'register'%}">Register</a>
       </div>
     </form><!-- form -->
     
