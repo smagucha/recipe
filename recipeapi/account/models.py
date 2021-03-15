@@ -13,9 +13,7 @@ class UserManager(BaseUserManager):
 
 		user = self.model(
 			email=self.normalize_email(email),
-			username= username,
-		
-			
+			username= username, 			
 			)
 		user.set_password(password)
 		user.save(using= self._db)
@@ -45,9 +43,8 @@ class User(AbstractBaseUser):
 	is_staff=models.BooleanField(default= False)
 	is_superuser = models.BooleanField(default= False)
 
-
 	USERNAME_FIELD= 'email'
-	REQUIRED_FIELD=['username']
+	REQUIRED_FIELDS=['username']
 
 	objects = UserManager()
 
