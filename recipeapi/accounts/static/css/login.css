@@ -137,7 +137,7 @@ form:after {
   z-index: -2;
 }
 #content form { margin: 0 20px; position: relative }
-#content form input[type="email"],
+#content form input[type="text"],
 #content form input[type="password"] {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -173,7 +173,7 @@ form:after {
   border: 1px solid #ed1c24;
   outline: none;
 }
-#email { background-position: 10px 10px !important }
+#username { background-position: 10px 10px !important }
 #password { background-position: 10px -53px !important }
 #content form input[type="submit"] {
   background: rgb(254,231,154);
