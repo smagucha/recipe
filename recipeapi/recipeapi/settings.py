@@ -16,6 +16,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -83,6 +84,7 @@ WSGI_APPLICATION = 'recipeapi.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+#
 
 DATABASES = {
 
@@ -90,15 +92,15 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': config('NAME'),
+        'NAME': config('DB_NAME'),
 
-        'USER': 'postgres',
+        'USER': config('USER'),
 
-        'PASSWORD': 'm34sopAn!',
+        'PASSWORD': config('PASSWORD'),
 
-        'HOST': 'localhost',
+        'HOST': config('HOST'),
 
-        'PORT': '5432',
+        'PORT': config('PORT'),
 
     }
 
