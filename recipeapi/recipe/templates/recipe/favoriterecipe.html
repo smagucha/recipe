@@ -6,11 +6,12 @@
     {%for i in allfavour%}
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="{{i.recipeimage}}" alt=""> 
+          <img class="card-img-top" src="{{i.recipeimage.url}}" alt=""> 
           <div class="card-body">
             <h4 class="card-title">{{i.recipelabel}}</h4>
             <p class="card-text">{{i.recipeingredientLines}}</p>
              <p class="card-text"><img src="{{i.image_url}}" height="200" width='200'></p>
+             <p class="card-text"><b>calories: {{i.recipecalories}}</b></p>
             <p class="card-text">{% for i in i.recipeingredient1 %} {{i}}<br>{%endfor%}</p>
           </div>
         </div>
