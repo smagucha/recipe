@@ -1,0 +1,22 @@
+{%extends 'recipe/base.html'%}
+{% load static %}
+{%block content%}
+<!-- Page Features -->
+    <div class="row text-center">
+    {%for i in newrecipe%}
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="{{i.recipeimage}}" alt=""> 
+          <div class="card-body">
+            <h4 class="card-title">{{i.recipelabel}}</h4>
+            <p class="card-text"> <b>calories {{i.recipecalories}}</b></p>
+            <p class="card-text">{% for i in i.recipeingredientLines %} {{i}}<br>{%endfor%}</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">save recipe</a>
+          </div>
+        </div>
+      </div>
+     {%endfor%}
+    </div>
+{%endblock%}

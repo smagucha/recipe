@@ -1,0 +1,26 @@
+{%extends 'accounts/base.html'%}
+{%load static %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+<div class="container">
+  <section id="content">
+    <form method="post" action="">
+      <h1>Login Form</h1>
+      {% csrf_token %}
+      <div>
+        <input type="text" placeholder="email" name="username"  required="" id="id_username" />
+      </div>
+      <div>
+        <input type="password" name="password" placeholder="Password" required id="id_password" />
+      </div>
+      <div>
+        <input type="submit" value="Log in" />
+        <input type="hidden" name="next" value="{{ next }}"/>
+        <a href="/accounts/reset_password/">Lost your password?</a>
+        <a href="{% url 'register'%}">Register</a>
+      </div>
+    </form><!-- form -->
+  </section><!-- content -->
+</div><!-- container -->
+{%endblock%}>
+
