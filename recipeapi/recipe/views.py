@@ -5,11 +5,11 @@ from django.http import HttpResponseRedirect
 import os
 from django.contrib.auth.decorators import login_required
 from .models import RecipeFood
-from .forms import RecipeForm
 from decouple import config
 
 @login_required(login_url='/accounts/login/')
 def home(request):
+	# print('this is the status',status_code)
 	return render(request, 'recipe/search.html')
 
 	
@@ -55,21 +55,9 @@ def searchform(request):
 		'newrecipe':newrecipe,
 		'recipe_save':recipe_save,
 	}
+
 	return render(request, 'recipe/home.html', context)
 
-
-
-@login_required(login_url='/accounts/login/')
-def addrecipe(request):
-	if request.method =='POST':
-		form =  RecipeForm(request.POST)
-		if form.is_valid():
-			form.save()
-			form =  RecipeForm()
-			return HttpResponseRedirect('favouriterecipe')
-	else:
-		form =  RecipeForm()
-		return render(request, 'recipe/addrecipe.html', {'form': form})
 
 
 
