@@ -13,7 +13,7 @@
             <p class="card-text">{% for i in i.recipeingredientLines %} {{i}}<br>{%endfor%}</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">save recipe</a>
+            <a href="{% url 'favouriterecipe' %}" class="btn btn-primary">save recipe</a>
           </div>
         </div>
       </div>

@@ -12,9 +12,6 @@ def home(request):
 	# print('this is the status',status_code)
 	return render(request, 'recipe/search.html')
 
-	
-
-		
 @login_required(login_url='/accounts/login/')
 def Favoriterecipe(request):
 	allfavour=RecipeFood.objects.all()
@@ -43,17 +40,17 @@ def searchform(request):
 
 		newrecipe.append(newrecipeska)
 
-	for recipe in hits:
-		recipe_save= RecipeFood.objects.create(
-		recipelabel=recipe['recipe']['label'],
-		recipecalories =recipe['recipe']['calories'],
-		image_url =recipe['recipe']['image'],
-		recipeingredient1 =recipe['recipe']['ingredientLines']
-		)
-		recipe_save.save()
+	# for recipe in hits:
+	# 	recipe_save= RecipeFood.objects.create(
+	# 	recipelabel=recipe['recipe']['label'],
+	# 	recipecalories =recipe['recipe']['calories'],
+	# 	image_url =recipe['recipe']['image'],
+	# 	recipeingredient1 =recipe['recipe']['ingredientLines']
+	# 	)
+	# 	recipe_save.save()
 	context ={
 		'newrecipe':newrecipe,
-		'recipe_save':recipe_save,
+		#'recipe_save':recipe_save,
 	}
 
 	return render(request, 'recipe/home.html', context)
